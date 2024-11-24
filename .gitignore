@@ -1,0 +1,9 @@
+#frontendフォルダ内の無視対象
+frontend/node_modules/
+
+#backendフォルダ内の無視対象
+backend/node_modules/
+backend/dist/
+backend/webpack.config.js
+
+.DS_Store
