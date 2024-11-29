@@ -1,8 +1,21 @@
 #frontendフォルダ内の無視対象
-frontend/node_modules/
+# dependencies
+/frontend/node_modules
+
+/frontend/build
+/frontend/.pnp
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
 
 #backendフォルダ内の無視対象
+# dependencies
 backend/node_modules/
+
 backend/dist/
 backend/webpack.config.js
 
