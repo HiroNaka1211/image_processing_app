@@ -7,7 +7,7 @@ export const startProcessing = async ({processingStyle,imageList}:processingProp
       
       //ファイル名の文字化けの対処として、エンコーディング
       imageList.map((image)=> {
-        console.log(image);
+        // console.log(image);
         formData.append('images', image,encodeURIComponent(`${image.name}`));
       })
       // console.log(formData.getAll('images'));
@@ -18,8 +18,11 @@ export const startProcessing = async ({processingStyle,imageList}:processingProp
       if (!res.ok) {
         throw new Error(`HTTP error!: Status${res.status}`);
       }
-      console.log(res);
-      return;
+      const data = await res.json();
+      const files = data.files;
+      // console.log(decodeURIComponent(files[0].fileName));
+      // console.log(files[0].buffer)
+      return files;
     } catch (error) {
       console.log("エラーです。", error);
       return [];
