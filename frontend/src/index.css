@@ -1,22 +1,17 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Added */
-  height: 100vh;
-  /* background: linear-gradient(rgb(55, 112, 138),rgb(43, 57, 105)); */
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  flex-direction: column; /* 要素を縦に並べる */
+  align-items: center;
+  justify-content: flex-start; /* 上に配置 */
+  min-height: 100vh; /* ビューポートより高さが小さくても、スクロール可能に */
+  padding: 0 20px;
+  overflow: auto; /* 内容が増えてもスクロール可能にする */
 }
