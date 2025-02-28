@@ -1,8 +1,7 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
-import FileInput from "./components/FileInput/FileInput";
-import DragDropArea from "./components/DragDropArea";
+import DragDropArea from "./components/DragAndDrop/DragDropArea";
 import InputImages from "./components/InputImages/InputImages";
 import ProcessingType from "./components/ProcessingType";
 import EditedImages from "./components/EditedImages/EditedImages";
@@ -36,8 +35,11 @@ function App() {
       <div className="upload-container">
         <button onClick={handleClick}>Start Processing</button>
         <ProcessingType processingSelect={setProcessing} />
-        <FileInput fileSelect={handleFileSelect} />
-        <DragDropArea fileSelect={handleFileSelect} />
+        <DragDropArea
+          fileSelect={handleFileSelect}
+          imageNum={images.length}
+          setEditedImage={setEditedImages}
+        />
         <InputImages images={images} setImages={setImages} />
         <EditedImages
           editedImages={editedImages}
