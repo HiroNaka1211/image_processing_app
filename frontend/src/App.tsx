@@ -34,11 +34,15 @@ function App() {
       <h1 className="title">画像アップロード & 加工</h1>
       <div className="upload-container">
         <button onClick={handleClick}>Start Processing</button>
-        <ProcessingType processingSelect={setProcessing} />
         <DragDropArea
           fileSelect={handleFileSelect}
           imageNum={images.length}
           setEditedImage={setEditedImages}
+        />
+        <ProcessingType
+          processing={processing}
+          processingSelect={setProcessing}
+          images={images}
         />
         <InputImages images={images} setImages={setImages} />
         <EditedImages
