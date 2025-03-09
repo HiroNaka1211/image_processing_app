@@ -26,7 +26,6 @@ function DropArea({ fileSelect, imageNum, setEditedImage }: FileInputProps) {
 
   const inputElem = useRef<HTMLInputElement | null>(null);
   const handleClick = () => {
-    console.log(inputElem);
     if (inputElem.current) {
       inputElem.current.click();
     }

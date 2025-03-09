@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./Processing.module.css";
 
 type ProcessingTypeProps = {
@@ -13,17 +13,34 @@ function ProcessingType({
   images,
 }: ProcessingTypeProps) {
   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    processingSelect(event.target.value);
+
+  const ulRef = useRef<HTMLUListElement>(null);
+  const processingRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  //セレクトタグの選択の際、選択肢以外のところがクリックされたら、選択メニューを非表示にする。
+  const handleClickOutside = (e: MouseEvent) => {
+    //containsに渡すために、e.targetをキャストする
+    if (
+      ulRef.current &&
+      processingRef.current &&
+      !processingRef.current.contains(e.target as HTMLElement) &&
+      !ulRef.current.contains(e.target as HTMLElement)
+    ) {
+      setIsMenuVisible(false); // メニューを非表示にする
+    }
   };
 
   const toggleMenu = () => {
-    setIsMenuVisible(true);
+    setIsMenuVisible(!isMenuVisible);
   };
   const handleClick = (option: string) => {
     processingSelect(option);
     setIsMenuVisible(false);
-    console.log(isMenuVisible);
   };
 
   return (
@@ -31,10 +48,15 @@ function ProcessingType({
       {images.length > 0 && (
         <div className={style.dropholder}>
           <p>Processing Style</p>
-          <div className={style.dropdown} onClick={toggleMenu}>
+          <div
+            ref={processingRef}
+            className={`${style.dropdown} ${isMenuVisible ? style.open : ""}`}
+            onClick={toggleMenu}
+          >
             <p>{processing}</p>
           </div>
           <ul
+            ref={ulRef}
             className={`${style.menu} ${isMenuVisible ? style.showMenu : ""}`}
           >
             <li onClick={() => handleClick("ALL")}>ALL</li>
@@ -43,12 +65,6 @@ function ProcessingType({
           </ul>
         </div>
       )}
-      {/* <select name="" id="processingType" onChange={handleChange}>
-        <option value="ALL">ALL</option>
-        <option value="BLUR">BLUR</option>
-        <option value="MOZAIKU">grayscale</option>
-        <option value="grayscale">circle</option>
-      </select> */}
     </div>
   );
 }
