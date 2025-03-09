@@ -5,11 +5,11 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: #333333;
+  color: #ffffff;
   display: flex;
   flex-direction: column; /* 要素を縦に並べる */
-  align-items: center;
+  /* align-items: center; */
   justify-content: flex-start; /* 上に配置 */
   min-height: 100vh; /* ビューポートより高さが小さくても、スクロール可能に */
   padding: 0 20px;

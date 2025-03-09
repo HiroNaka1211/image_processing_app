@@ -1,12 +1,18 @@
+.dragDropContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; 高さを画面いっぱいに */
+}
 .dragArea {
   background-color: #f1f1f1;
-  /* display: inline-block; */
+  display: inline-block;
   padding: 20px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border: #aaa dashed 3px;
   min-height: 400px; /* 高さを広げる */
   width: 100%; /* 横幅を親要素に合わせる */
-  max-width: 900px; /* 最大幅を設定して大きすぎないようにする（必要に応じて調整） */
+  max-width: 800px; /* 最大幅を設定して大きすぎないようにする（必要に応じて調整） */
   display: flex;
   flex-direction: column;
   justify-content: center; /* Align items vertically in the center */
