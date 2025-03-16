@@ -12,6 +12,7 @@ function App() {
   const [images, setImages] = useState<File[]>([]);
   const [editedImages, setEditedImages] = useState<EditedImageType[]>([]);
   const [processing, setProcessing] = useState<string>("ALL");
+  const [loading, setLoading] = useState<boolean>(false);
 
   //stored received selected files as input images
   const handleFileSelect = (newFiles: File[]) => {
@@ -19,15 +20,24 @@ function App() {
   };
 
   const handleClick = async (e: React.MouseEvent) => {
+    setLoading(true);
     const ImageData = {
       processingStyle: processing,
       imageList: images,
     };
     const data = await startProcessing(ImageData);
-    console.log(data);
     setImages([]);
     setEditedImages(data);
+    setLoading(false);
   };
+  if (loading) {
+    return (
+      <div className="overlay">
+        <div className="loading"></div>
+        <span className="processing">Processing...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
