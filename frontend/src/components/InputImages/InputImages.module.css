@@ -14,6 +14,19 @@
   flex-basis: 20%;
 }
 
+.deleteBtn {
+  --backgroundColor: #ca1717;
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--backgroundColor);
+  padding: 1em 2em;
+  margin-top: 10px;
+  border-radius: 8px;
+  &:hover {
+    background-color: color-mix(in srgb, var(--backgroundColor), black 30%);
+  }
+}
+
 @media (max-width: 768px) {
   .card {
     width: 100%; /* モバイルなどの狭い画面では1列表示 */
