@@ -24,7 +24,12 @@ function InputImages(props: InputImagesProps) {
               return (
                 <div className={style.card} key={index}>
                   <img src={imageURL} alt="" width={300} height={300} />
-                  <button onClick={() => handleDelete(index)}>DELETE</button>
+                  <button
+                    className={style.deleteBtn}
+                    onClick={() => handleDelete(index)}
+                  >
+                    DELETE
+                  </button>
                 </div>
               );
             })}

@@ -1,6 +1,13 @@
 a {
+  --backgroundColor: #0066ff;
   text-decoration: none;
   color: white;
-  padding: 10px;
-  border: 1px solid red;
+  background-color: var(--backgroundColor);
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  &:hover {
+    background-color: color-mix(in srgb, var(--backgroundColor), black 30%);
+  }
 }
