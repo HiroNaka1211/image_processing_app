@@ -10,6 +10,7 @@ export default function Modal({ image, setOpenModalIndex }: ModalProps) {
   const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
 
   const onMouseDown = (e: React.MouseEvent<HTMLElement>) => {
+    console.log(e.target);
     if (e.target === e.currentTarget) {
       setIsMouseDown(true);
     }
@@ -23,18 +24,26 @@ export default function Modal({ image, setOpenModalIndex }: ModalProps) {
       }
     }
   };
+
+  const handleClose = () => {
+    setOpenModalIndex(null);
+  };
+
   return (
     <div
       className={style.overlay}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
     >
-      <img
-        className={style.image}
-        src={"data:image/png;base64," + image.buffer}
-        width={300}
-        height={300}
-      />
+      <div className={style.imageWrapper}>
+        <img
+          className={style.image}
+          src={"data:image/png;base64," + image.buffer}
+          width={300}
+          height={300}
+        />
+        <span className={style.close} onClick={handleClose}></span>
+      </div>
     </div>
   );
 }
