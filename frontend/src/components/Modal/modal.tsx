@@ -39,8 +39,6 @@ export default function Modal({ image, setOpenModalIndex }: ModalProps) {
         <img
           className={style.image}
           src={"data:image/png;base64," + image.buffer}
-          width={300}
-          height={300}
         />
         <span className={style.close} onClick={handleClose}></span>
       </div>
